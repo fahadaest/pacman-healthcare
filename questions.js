@@ -1,0 +1,22 @@
+const questions = [
+    { question: "What is the normal adult body temperature?", options: ["36.0°C", "37.0°C", "38.0°C", "39.0°C"], correct: 2 },
+    { question: "Which vitamin is primarily produced when the skin is exposed to sunlight?", options: ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin E"], correct: 3 },
+    { question: "What is the primary function of red blood cells?", options: ["Fight infections", "Carry oxygen", "Digest food", "Regulate body temperature"], correct: 2 },
+    { question: "Which of the following is a common symptom of diabetes?", options: ["Fatigue", "Excessive hunger", "Frequent urination", "All of the above"], correct: 4 },
+    { question: "What is the recommended daily intake of water for an average adult?", options: ["2 liters", "1.5 liters", "3 liters", "4 liters"], correct: 1 },
+    { question: "Which organ is primarily responsible for detoxifying the body?", options: ["Heart", "Liver", "Kidneys", "Lungs"], correct: 2 },
+    { question: "What does BMI stand for?", options: ["Body Mass Index", "Basic Muscle Index", "Body Metabolic Indicator", "Body Measurement Index"], correct: 1 },
+    { question: "What is the most common cause of high blood pressure?", options: ["Obesity", "Smoking", "Excessive salt intake", "All of the above"], correct: 4 },
+    { question: "What does CPR stand for?", options: ["Cardiopulmonary Resuscitation", "Central Pulse Regulation", "Critical Patient Rescue", "Cerebral Pressure Release"], correct: 1 },
+    { question: "Which of the following is a healthy blood sugar level for a non-diabetic?", options: ["70-99 mg/dL", "100-120 mg/dL", "140-160 mg/dL", "160-180 mg/dL"], correct: 1 },
+    { question: "Which of the following conditions is commonly associated with a high cholesterol level?", options: ["Arthritis", "Heart disease", "Asthma", "Hypertension"], correct: 2 },
+    { question: "Which type of exercise is most beneficial for heart health?", options: ["Strength training", "Cardio", "Yoga", "Pilates"], correct: 2 },
+    { question: "What is the recommended amount of sleep for an adult?", options: ["4-6 hours", "7-9 hours", "9-11 hours", "6-8 hours"], correct: 2 },
+    { question: "Which of the following is a risk factor for developing cancer?", options: ["Smoking", "Genetics", "Exposure to sunlight", "All of the above"], correct: 4 },
+    { question: "What is the function of insulin in the body?", options: ["Regulates blood sugar levels", "Aids in digestion", "Controls metabolism", "Stimulates appetite"], correct: 1 },
+    { question: "Which of the following is a common symptom of a stroke?", options: ["Slurred speech", "Numbness in the face", "Difficulty walking", "All of the above"], correct: 4 },
+    { question: "What is the most common type of cancer in women?", options: ["Breast cancer", "Lung cancer", "Skin cancer", "Ovarian cancer"], correct: 1 },
+    { question: "Which of the following is the leading cause of death worldwide?", options: ["Cancer", "Heart disease", "Stroke", "Respiratory diseases"], correct: 2 },
+    { question: "Which of the following vaccines is recommended for young children?", options: ["Flu vaccine", "Measles vaccine", "Hepatitis B vaccine", "All of the above"], correct: 4 },
+    { question: "What is a common side effect of taking antibiotics?", options: ["Stomach upset", "Headache", "Dizziness", "All of the above"], correct: 4 }
+];

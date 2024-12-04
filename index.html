@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>HTML5 Pacman</title>
+
+  <style type="text/css">
+    @font-face {
+      font-family: 'BDCartoonShoutRegular';
+      src: url('BD_Cartoon_Shout-webfont.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    #pacman {
+      height: 450px;
+      width: 342px;
+      margin: 20px auto;
+      position: relative;
+      background-color: black;
+    }
+
+    #shim {
+      font-family: BDCartoonShoutRegular;
+      position: absolute;
+      visibility: hidden;
+    }
+
+    h1 {
+      font-family: BDCartoonShoutRegular;
+      text-align: center;
+    }
+
+    body {
+      width: 342px;
+      margin: 0px auto;
+      font-family: sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .modal {
+      font-family: 'BDCartoonShoutRegular';
+      src: url('BD_Cartoon_Shout-webfont.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: black;
+      border: 4px solid blue;
+      border-radius: 10px;
+      z-index: 10;
+      width: 80%;
+      max-width: 90%;
+      box-sizing: border-box;
+      height: 80%;
+      max-height: 90%;
+    }
+
+    .modal-content {
+      padding: 0% 10% 0% 10%;
+      max-height: 100%;
+      text-align: center;
+      color: yellow;
+    }
+
+    .choices {
+      margin: 10px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .choices button {
+      font-family: 'BDCartoonShoutRegular';
+      src: url('BD_Cartoon_Shout-webfont.ttf') format('truetype');
+      align-items: center;
+      padding: 5px;
+      margin: 10px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      background-color: black;
+      border-radius: 4px;
+      border: 4px solid blue;
+      color: yellow;
+      font-size: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="pacman">
+    <div id="questionModal" class="modal">
+      <div class="modal-content">
+        <h6></h6>
+        <p style="font-size: 10px;"></p>
+        <div class="choices">
+          <button class="choice" onclick="checkAnswer()"></button>
+          <button class="choice" onclick="checkAnswer()"></button>
+          <button class="choice" onclick="checkAnswer()"></button>
+          <button class="choice" onclick="checkAnswer()"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="pacman.js"></script>
+  <script src="modernizr-1.5.min.js"></script>
+
+  <script>
+
+    function checkAnswer(selectedIndex) {
+      const modal = document.getElementById('questionModal');
+      const correctIndex = questions.find(
+        (q) => q.question === modal.querySelector('p').textContent
+      ).correct;
+
+      modal.style.display = 'none';
+      if (selectedIndex === correctIndex) {
+        modal.style.display = 'block';
+        modal.querySelector('.modal-content h6').textContent = "";
+        modal.querySelector('.modal-content p').textContent = "Correct Answer, resuming in 4 seconds...";
+        modal.querySelector('.choices').textContent = "Ghosts can be eaten!";
+
+        let countdown = 4;
+        const countdownInterval = setInterval(function () {
+          modal.querySelector('.modal-content p').textContent = "Correct Answer, resuming in " + countdown + " seconds...";
+          countdown--;
+          if (countdown < 0) {
+            clearInterval(countdownInterval);
+            modal.style.display = 'none';
+            if (typeof window.ghostCanBeEaten === 'function') {
+              window.ghostCanBeEaten();
+            }
+            if (typeof window.resumeGame === 'function') {
+              window.resumeGame();
+            }
+          }
+        }, 1000);
+      } else {
+
+        modal.style.display = 'block';
+        modal.querySelector('.modal-content h6').textContent = "";
+        modal.querySelector('.modal-content p').textContent = "Wrong Answer, resuming in 4 seconds...";
+        modal.querySelector('.choices').textContent = "Ghosts remain normal :(";
+
+        let countdown = 4;
+        const countdownInterval = setInterval(function () {
+          modal.querySelector('.modal-content p').textContent = "Wrong Answer, resuming in " + countdown + " seconds...";
+          countdown--;
+          if (countdown < 0) {
+            clearInterval(countdownInterval);
+            modal.style.display = 'none';
+            if (typeof window.resumeGame === 'function') {
+              window.resumeGame();
+            }
+          }
+        }, 1000);
+      }
+    }
+
+    var el = document.getElementById("pacman");
+
+    if (Modernizr.canvas && Modernizr.localstorage &&
+      Modernizr.audio && (Modernizr.audio.ogg || Modernizr.audio.mp3)) {
+      window.setTimeout(function () { PACMAN.init(el, "./"); }, 0);
+      showModal();
+    } else {
+      el.innerHTML = "Sorry, needs a decent browser<br /><small>" +
+        "(firefox 3.6+, Chrome 4+, Opera 10+ and Safari 4+)</small>";
+    }
+  </script>
+</body>
+
+</html>

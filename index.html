@@ -109,6 +109,8 @@
           <button class="choice" onclick="checkAnswer()"></button>
           <button class="choice" onclick="checkAnswer()"></button>
         </div>
+        <div class="correctAnswer">
+        </div>
       </div>
     </div>
   </div>
@@ -124,6 +126,10 @@
       const correctIndex = questions.find(
         (q) => q.question === modal.querySelector('p').textContent
       ).correct;
+
+      const correctAnswer = questions.find(
+        (q) => q.question === modal.querySelector('p').textContent
+      ).options[correctIndex - 1];
 
       modal.style.display = 'none';
       if (selectedIndex === correctIndex) {
@@ -152,7 +158,8 @@
         modal.style.display = 'block';
         modal.querySelector('.modal-content h6').textContent = "";
         modal.querySelector('.modal-content p').textContent = "Wrong Answer, resuming in 4 seconds...";
-        modal.querySelector('.choices').textContent = "Ghosts remain normal :(";
+        modal.querySelector('.choices').innerHTML = `Ghosts remain normal`;
+        modal.querySelector('.correctAnswer').innerHTML = `The correct answer is "${correctAnswer}"`;
 
         let countdown = 4;
         const countdownInterval = setInterval(function () {

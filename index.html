@@ -109,8 +109,6 @@
           <button class="choice" onclick="checkAnswer()"></button>
           <button class="choice" onclick="checkAnswer()"></button>
         </div>
-        <div class="correctAnswer">
-        </div>
       </div>
     </div>
   </div>
@@ -157,13 +155,12 @@
 
         modal.style.display = 'block';
         modal.querySelector('.modal-content h6').textContent = "";
-        modal.querySelector('.modal-content p').textContent = "Wrong Answer, resuming in 4 seconds...";
-        modal.querySelector('.choices').innerHTML = `Ghosts remain normal`;
-        modal.querySelector('.correctAnswer').innerHTML = `The correct answer is "${correctAnswer}"`;
+        modal.querySelector('.modal-content p').textContent = "Wrong Answer, Ghosts remain normal, resuming in 4 seconds...";
+        modal.querySelector('.choices').innerHTML = `The correct answer is "${correctAnswer}"`;
 
         let countdown = 4;
         const countdownInterval = setInterval(function () {
-          modal.querySelector('.modal-content p').textContent = "Wrong Answer, resuming in " + countdown + " seconds...";
+          modal.querySelector('.modal-content p').textContent = "Wrong Answer, Ghosts remain normal, resuming in " + countdown + " seconds...";
           countdown--;
           if (countdown < 0) {
             clearInterval(countdownInterval);
